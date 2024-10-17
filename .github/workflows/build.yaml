@@ -3,11 +3,11 @@ on: push
   # push:
   #   paths:
   #     - app/**
+permissions: read-all
 jobs:
   check_code:
     name: Lint code base
     runs-on: ubuntu-latest
-    permissions: read-all
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -30,7 +30,6 @@ jobs:
   buid_and_push:
     name: Build and push application image to Dockerhub registry
     runs-on: ubuntu-latest
-    permissions: read-all
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
