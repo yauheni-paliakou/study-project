@@ -1,7 +1,8 @@
 """
 Flask web application with Hello World message and funny cat picture.
 
-This application displays a "Hello World" message and the hostname of the server it's running on. Additionally, it shows a funny cat picture from an internet URL.
+This application displays a "Hello World" message and the hostname of the server it's running on.
+Additionally, it shows a funny cat picture from an internet URL.
 """
 
 import socket
