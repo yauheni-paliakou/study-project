@@ -23,8 +23,5 @@ def hello():
 
 
 if __name__ == "__main__":
-    """
-    Runs the Flask application on port 5000 and makes it accessible
-    from any host.
-    """
+    # Runs the Flask application on port 5000 and makes it accessible from any host.
     app.run(host="0.0.0.0", port=5000)
