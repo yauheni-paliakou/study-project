@@ -25,10 +25,8 @@ jobs:
     name: Build and push application image to Dockerhub registry
     runs-on: ubuntu-latest
     steps:
-      - name: image tag
-        id: image-tag
-        shell: pwsh
-        run: $TAG = ${{ GITHUB_SHA }}.substring(0, 7)
+      - name: Show image tag
+        run: echo ${GITHUB_SHA::7}
 
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
@@ -37,8 +35,8 @@ jobs:
         run: |
           pwd
           ls -la
-          docker build -t yauhenipaliakou/study-project:${{ steps.image-tag.outputs.TAG }} ./app
+          docker build -t yauhenipaliakou/study-project:${GITHUB_SHA::7} ./app
       
       - name: Docker Push
         run: |
-          docker push yauhenipaliakou/study-project:${{ steps.image-tag.outputs.TAG }}
+          docker push yauhenipaliakou/study-project:${GITHUB_SHA::7}
