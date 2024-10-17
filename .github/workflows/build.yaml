@@ -30,6 +30,7 @@ jobs:
   buid_and_push:
     name: Build and push application image to Dockerhub registry
     runs-on: ubuntu-latest
+    permissions: read-all
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -41,7 +42,7 @@ jobs:
         run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Docker Build
-        run: docker build -t yauhenipaliakou/study-project:${GITHUB_SHA::8} ./app
+        run: docker build -t "yauhenipaliakou/study-project:${GITHUB_SHA::8}" ./app
       
       - name: Docker Push
-        run: docker push yauhenipaliakou/study-project:${GITHUB_SHA::8}
+        run: docker push "yauhenipaliakou/study-project:${GITHUB_SHA::8}"
