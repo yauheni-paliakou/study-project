@@ -3,7 +3,7 @@ import socket
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route("/")
 def hello():
     hostname = socket.gethostname()
     return render_template('index.html', hostname=hostname)
