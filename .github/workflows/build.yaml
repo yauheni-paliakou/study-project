@@ -1,8 +1,8 @@
 name: Build
-on: push
-  # push:
-  #   paths:
-  #     - app/**
+on:
+  push:
+    paths:
+      - app/**
 permissions: read-all
 jobs:
   check_code:
