@@ -25,6 +25,9 @@ jobs:
     name: Build and push application image to Dockerhub registry
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
       - name: Show image tag
         run: echo ${GITHUB_SHA::8}
 
