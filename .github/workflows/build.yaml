@@ -28,6 +28,7 @@ jobs:
           FIX_YAML_PRETTIER: true
 
   buid_and_push:
+    needs: check_code
     name: Build and push application image to Dockerhub registry
     runs-on: ubuntu-latest
     steps:
