@@ -2,7 +2,7 @@ name: Build
 on:
   push:
     paths:
-      - app/*
+      - app/**
 jobs:
   check_code:
     name: Lint code base
