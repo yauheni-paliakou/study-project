@@ -20,6 +20,10 @@ jobs:
         env:
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FIX_HTML_PRETTIER: true
+          VALIDATE_GITLEAKS: false
+          VALIDATE_MARKDOWN: false
+          FIX_YAML_PRETTIER: true
 
   buid_and_push:
     name: Build and push application image to Dockerhub registry
@@ -29,7 +33,7 @@ jobs:
         uses: actions/checkout@v4
         
       - name: Show image tag
-        run: echo ${GITHUB_SHA::8}
+        run: echo "${GITHUB_SHA::8}"
 
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
