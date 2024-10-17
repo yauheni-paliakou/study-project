@@ -10,16 +10,25 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          # super-linter needs the full git history to get the
+          # list of files that changed across commits
+          fetch-depth: 0
 
       - name: Super-linter
         uses: super-linter/super-linter@v7.1.0 # x-release-please-version
+        env:
+          # To report GitHub Actions status checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }
+
   buid_and_push:
     name: Build and push application image to Dockerhub registry
     runs-on: ubuntu-latest
     steps:
       - name: image tag
         id: image-tag
-        run: pwsh $TAG = $GITHUB_SHA.substring(0, 7)
+        shell: pwsh
+        run: $TAG = $GITHUB_SHA.substring(0, 7)
 
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
