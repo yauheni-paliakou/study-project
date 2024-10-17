@@ -23,6 +23,7 @@ jobs:
           FIX_HTML_PRETTIER: true
           VALIDATE_GITLEAKS: false
           VALIDATE_MARKDOWN: false
+          VALIDATE_MARKDOWN_PRETTIER: false
           FIX_YAML_PRETTIER: true
 
   buid_and_push:
